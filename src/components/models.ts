@@ -31,19 +31,25 @@ export let menu = ref([
     },
 ])
 
-function CommonSuccess(Message: string) {
+export function CommonSuccess(Message: string) {
     Notify.create({
         type: 'positive',
         message: Message,
         position: 'top',
+        icon: 'done',
+        group: false,
+        timeout: 1000,
     })
 }
 
-function CommonFail(Message: string) {
+export function CommonFail(Message: string) {
     Notify.create({
-        type: 'positive',
+        type: 'negative',
         message: Message,
         position: 'top',
+        icon: 'info',
+        group: false,
+        timeout: 1000,
     })
 }
 

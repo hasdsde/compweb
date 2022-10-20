@@ -25,115 +25,101 @@
     </div>
     <!--  开始计时  -->
     <div class="row justify-center q-pt-md">
-      <q-btn color="primary" label="开始计时" @click="start"/>
+      <q-btn color="primary" label="开始计时 !" @click="start"/>
     </div>
     <!--  答题卡片  -->
     <div class="row justify-center q-pt-md">
-      <q-card class="my-card bg-secondary text-white q-ma-md">
-        <q-card-section>
-          <div class="text-h6">田所浩二</div>
-          <div class="text-subtitle2 q-mb-md">20201313114</div>
+      <q-card class="my-card  text-white q-ma-md" v-for="compData in CompDatas">
+        <q-card-section :class="'bg-'+compData.color">
+          <div class="text-h6">{{ compData.name }}</div>
+          <div class="text-subtitle2 q-mb-md">{{ compData.no }}</div>
           <q-separator dark/>
-          <q-card-section>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>性别:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2" style="max-height: 30px">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>年级专业班级:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>政治面貌:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>民族:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>担任职务:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>家庭住址:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>宿舍号:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>家庭经济情况:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>奖惩情况:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>学习情况:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>兴趣爱好:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-            <div class="row" style="min-height: 30px">
-              <div class="col-4"><span>职业倾向:</span></div>
-              <div class="col-6"><span>男</span></div>
-              <div class="col-2">
-                <q-btn color="primary" label="查看" size="xs"/>
-              </div>
-            </div>
-
-
-          </q-card-section>
         </q-card-section>
-      </q-card>
-      <q-card class="my-card bg-purple text-white q-ma-md">
-        <q-card-section>
-          <div class="text-h6">田所浩二</div>
-          <div class="text-subtitle2">CARD_TWO</div>
-        </q-card-section>
-      </q-card>
-      <q-card class="my-card bg-orange  text-white q-ma-md">
-        <q-card-section>
-          <div class="text-h6">田所浩二</div>
-          <div class="text-subtitle2">CARD_THREE</div>
+        <q-card-section :class="'text-'+compData.color">
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>性别:</span></div>
+            <div class="col-6"><span>{{ compData.sex }}</span></div>
+            <div class="col-2" style="max-height: 30px">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>年级专业班级:</span></div>
+            <div class="col-6"><span>{{ compData.grade }}</span></div>
+            <div class="col-2">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>政治面貌:</span></div>
+            <div class="col-6"><span>{{ compData.face }}</span></div>
+            <div class="col-2">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>民族:</span></div>
+            <div class="col-6"><span>{{ compData.people }}</span></div>
+            <div class="col-2">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>担任职务:</span></div>
+            <div class="col-6"><span>{{ compData.job }}</span></div>
+            <div class="col-2">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>家庭住址:</span></div>
+            <div class="col-6"><span>{{ compData.address }}</span></div>
+            <div class="col-2">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>宿舍号:</span></div>
+            <div class="col-6"><span>{{ compData.flat }}</span></div>
+            <div class="col-2">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>家庭经济情况:</span></div>
+            <div class="col-6"><span>{{ compData.ecomony }}</span></div>
+            <div class="col-2">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>奖惩情况:</span></div>
+            <div class="col-6"><span>{{ compData.reward }}</span></div>
+            <div class="col-2">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>学习情况:</span></div>
+            <div class="col-6"><span>{{ compData.study }}</span></div>
+            <div class="col-2">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>兴趣爱好:</span></div>
+            <div class="col-6"><span>{{ compData.hobby }}</span></div>
+            <div class="col-2">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>职业倾向:</span></div>
+            <div class="col-6"><span>{{ compData.target }}</span></div>
+            <div class="col-2">
+              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+            </div>
+          </div>
         </q-card-section>
       </q-card>
     </div>
@@ -143,14 +129,24 @@
 <script lang="ts" setup>
 import {ref} from "vue";
 import {api} from "boot/axios";
+import {CommonFail} from "components/models";
 
 const TeacherName = ref('')
 const value = ref(false)
+const CompDatas = ref({})
 
 function start() {
-  api.get('/student/compA/' + TeacherName.value).then(res => {
-    console.log(res.data)
-  })
+  if (TeacherName.value == '') {
+    CommonFail('请选择教师')
+  } else {
+    api.get('/student/compA/' + TeacherName.value).then(res => {
+      res.data[0].color = 'accent'
+      res.data[1].color = 'secondary'
+      res.data[2].color = 'orange'
+      CompDatas.value = res.data
+      console.log(res.data)
+    })
+  }
 }
 </script>
 
