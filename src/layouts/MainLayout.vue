@@ -3,16 +3,16 @@
     <q-header elevated>
       <q-toolbar>
         <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
+            flat
+            dense
+            round
+            icon="menu"
+            aria-label="Menu"
+            @click="toggleLeftDrawer"
         />
 
         <q-toolbar-title>
-          <q-breadcrumbs  style="font-size: 14px">
+          <q-breadcrumbs style="font-size: 14px">
             <q-breadcrumbs-el :label="positions[0]" icon="home" style="color: white"/>
             <q-breadcrumbs-el :label="positions[1]" icon="widgets" style="color: white"/>
           </q-breadcrumbs>
@@ -23,16 +23,11 @@
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
+        v-model="leftDrawerOpen"
+        show-if-above
+        bordered
     >
       <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
 
         <EssentialLink
         />
@@ -40,7 +35,7 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <router-view/>
     </q-page-container>
   </q-layout>
 </template>
@@ -48,7 +43,6 @@
 <script setup lang="ts">
 import {ref, watch} from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
-import Aside from '../components/Aside.vue';
 import {useStore} from "src/store";
 import {menu} from "components/models";
 import {useRouter} from "vue-router/dist/vue-router";
@@ -61,8 +55,8 @@ let positions = ref()
 //监听当前路由变化，一旦变化调用下面函数
 watch(() => $router.currentRoute.value.path, (newValue, oldValue) => {
   positions.value = findTitle()
-  console.log(positions)
 }, {immediate: true})
+
 //遍历菜单，寻找与当前路由相同的中文名，将其返回
 function findTitle() {
   let position = []

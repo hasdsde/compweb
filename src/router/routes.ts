@@ -10,6 +10,7 @@ const routes: RouteRecordRaw[] = [
         { path: 'fish', component: () => import('pages/FishComp.vue') },
         { path: 'location', component: () => import('pages/LocationComp.vue') },
         { path: 'about', component: () => import('pages/About.vue') },
+        { path: 'userManager', component: () => import('pages/userManager.vue') },
     ],
   },
 

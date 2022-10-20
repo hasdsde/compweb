@@ -18,6 +18,11 @@ export let menu = ref([
     ]
   },
   {
+    icon: 'tune', label: '管理', id: 7, isopen: true, children: [
+      {link: 'userManager', icon: 'manage_accounts', desc: '数据管理', id: 4,},
+    ]
+  },
+  {
     icon: 'perm_identity', label: '其他', isopen: true, id: 2, children: [
       {link: 'about', icon: 'info', desc: '关于', id: 3},
     ]

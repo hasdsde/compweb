@@ -1,2 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?> 
- <trees/>
+<?xml version="1.0" encoding="UTF-8"?>
+<trees>
+    <tree path="/src/pages/userManager.vue" title="数据管理" extension="vue"/>
+    <tree path="/src/pages/SeaComp.vue" title="大海捞针" extension="vue"/>
+</trees>
