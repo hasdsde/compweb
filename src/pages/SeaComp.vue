@@ -24,8 +24,18 @@
       </div>
     </div>
     <!--  开始计时  -->
-    <div class="row justify-center q-pt-md">
+    <div class="row justify-center q-pt-md ">
       <q-btn color="primary" label="开始计时 !" @click="start"/>
+
+    </div>
+    <!--  倒计时  -->
+    <div class="row justify-center q-pt-md ">
+      <q-linear-progress rounded size="30px" stripe :value="pec" color="primary" style="width: 60vw"
+                         class="q-mt-sm ">
+        <div class="absolute-full flex flex-center">
+          <q-badge text-color="white" :label="sec+'秒'"/>
+        </div>
+      </q-linear-progress>
     </div>
     <!--  答题卡片  -->
     <div class="row justify-center q-pt-md">
@@ -38,86 +48,91 @@
         <q-card-section :class="'text-'+compData.color">
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>性别:</span></div>
-            <div class="col-6"><span>{{ compData.sex }}</span></div>
+            <div class="col-6"><span v-if="compData.Bsex">{{ compData.sex }}</span></div>
             <div class="col-2" style="max-height: 30px">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" @click="compData.Bsex=!compData.Bsex" size="xs"/>
             </div>
           </div>
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>年级专业班级:</span></div>
-            <div class="col-6"><span>{{ compData.grade }}</span></div>
+            <div class="col-6"><span v-if="compData.Bgrade">{{ compData.grade }}</span></div>
             <div class="col-2">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" @click="compData.Bgrade = !compData.Bgrade" size="xs"/>
             </div>
           </div>
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>政治面貌:</span></div>
-            <div class="col-6"><span>{{ compData.face }}</span></div>
+            <div class="col-6"><span v-if="compData.Bface">{{ compData.face }}</span></div>
             <div class="col-2">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" @click="compData.Bface = !compData.Bface" size="xs"/>
             </div>
           </div>
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>民族:</span></div>
-            <div class="col-6"><span>{{ compData.people }}</span></div>
+            <div class="col-6"><span v-if="compData.Bpeople">{{ compData.people }}</span></div>
             <div class="col-2">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs"
+                     @click="compData.Bpeople = !compData.Bpeople"/>
             </div>
           </div>
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>担任职务:</span></div>
-            <div class="col-6"><span>{{ compData.job }}</span></div>
+            <div class="col-6"><span v-if="compData.Bjob">{{ compData.job }}</span></div>
             <div class="col-2">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs" @click="compData.Bjob = !compData.Bjob"/>
             </div>
           </div>
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>家庭住址:</span></div>
-            <div class="col-6"><span>{{ compData.address }}</span></div>
+            <div class="col-6"><span v-if="compData.Baddress">{{ compData.address }}</span></div>
             <div class="col-2">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs"
+                     @click="compData.Baddress = !compData.Baddress"/>
             </div>
           </div>
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>宿舍号:</span></div>
-            <div class="col-6"><span>{{ compData.flat }}</span></div>
+            <div class="col-6"><span v-if="compData.Bflat">{{ compData.flat }}</span></div>
             <div class="col-2">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs" @click="compData.Bflat = !compData.Bflat"/>
             </div>
           </div>
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>家庭经济情况:</span></div>
-            <div class="col-6"><span>{{ compData.ecomony }}</span></div>
+            <div class="col-6"><span v-if="compData.Becomony">{{ compData.ecomony }}</span></div>
             <div class="col-2">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs"
+                     @click="compData.Becomony = !compData.Becomony"/>
             </div>
           </div>
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>奖惩情况:</span></div>
-            <div class="col-6"><span>{{ compData.reward }}</span></div>
+            <div class="col-6"><span v-if="compData.Breward">{{ compData.reward }}</span></div>
             <div class="col-2">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs"
+                     @click="compData.Breward = !compData.Breward"/>
             </div>
           </div>
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>学习情况:</span></div>
-            <div class="col-6"><span>{{ compData.study }}</span></div>
+            <div class="col-6"><span v-if="compData.Bstudy">{{ compData.study }}</span></div>
             <div class="col-2">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs" @click="compData.Bstudy = !compData.Bstudy"/>
             </div>
           </div>
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>兴趣爱好:</span></div>
-            <div class="col-6"><span>{{ compData.hobby }}</span></div>
+            <div class="col-6"><span v-if="compData.Bhobby">{{ compData.hobby }}</span></div>
             <div class="col-2">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs" @click="compData.Bhobby = !compData.Bhobby"/>
             </div>
           </div>
           <div class="row" style="min-height: 30px">
             <div class="col-4"><span>职业倾向:</span></div>
-            <div class="col-6"><span>{{ compData.target }}</span></div>
+            <div class="col-6"><span v-if="compData.Btarget">{{ compData.target }}</span></div>
             <div class="col-2">
-              <q-btn :color="compData.color" outline label="查看" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs"
+                     @click="compData.Btarget = !compData.Btarget"/>
             </div>
           </div>
         </q-card-section>
@@ -130,10 +145,15 @@
 import {ref} from "vue";
 import {api} from "boot/axios";
 import {CommonFail} from "components/models";
+import {useQuasar} from "quasar";
 
 const TeacherName = ref('')
 const value = ref(false)
 const CompDatas = ref({})
+const sec = ref(0)
+const pec = ref(0)
+const allTime = 20
+const $q = useQuasar()
 
 function start() {
   if (TeacherName.value == '') {
@@ -143,9 +163,41 @@ function start() {
       res.data[0].color = 'accent'
       res.data[1].color = 'secondary'
       res.data[2].color = 'orange'
+      res.data.forEach((item: any) => {
+        item.Bsex = ref(false)
+        item.Bgrade = ref(false)
+        item.Bface = ref(false)
+        item.Bpeople = ref(false)
+        item.Bjob = ref(false)
+        item.Baddress = ref(false)
+        item.Bflat = ref(false)
+        item.Becomony = ref(false)
+        item.Breward = ref(false)
+        item.Bstudy = ref(false)
+        item.Bhobby = ref(false)
+        item.Btarget = ref(false)
+      })
       CompDatas.value = res.data
       console.log(res.data)
     })
+    //开始倒计时
+    pec.value = 1
+    sec.value = allTime
+    setInterval(() => {
+      sec.value = sec.value - 1
+      pec.value = sec.value / allTime
+      if (sec.value === 1) {
+        $q.dialog({
+          title: '提醒',
+          message: '时间结束'
+        }).onOk(() => {
+          // console.log('OK')
+        })
+      }
+      if (sec.value < 1) {
+        sec.value = 0
+      }
+    }, 1000)
   }
 }
 </script>
