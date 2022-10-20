@@ -56,7 +56,6 @@ const columns = [
 function loadPage() {
   api.get('/student/all').then(res => {
     rows.value = res.data
-    console.log(rows.value)
   })
 }
 

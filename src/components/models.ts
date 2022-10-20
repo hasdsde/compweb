@@ -15,6 +15,7 @@ export let menu = ref([
     {
         icon: 'home', label: '比赛', id: 1, isopen: true, children: [
             {link: 'sea', icon: 'travel_explore', desc: '大海捞针', id: 4,},
+            {link: 'home', icon: 'travel_explore', desc: '首页', id: 7,},
             {link: 'fish', icon: 'animation', desc: '鱼目混珠', id: 5},
             {link: 'location', icon: 'explore', desc: '鱼目混珠', id: 6},
         ]
