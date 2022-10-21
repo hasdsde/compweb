@@ -69,7 +69,7 @@ const selected = ref([])
 const TeacherName = ref('')
 const sec = ref(0)
 const pec = ref(0)
-const allTime = 20
+const allTime = 10
 const score = ref(0)
 const $q = useQuasar()
 let allData = []//全部信息
@@ -79,6 +79,8 @@ const allDataRef = ref([])//全部信息带响应式
 const yourSelect = ref([])//你的选择
 const yourSelectArray = ref([])//你选择的学生学号
 const correctSelect = ref([])//你的正确的选择
+
+
 //开始启动
 function start() {
   //不能重复计时
@@ -88,19 +90,14 @@ function start() {
     if (TeacherName.value == '') {
       CommonFail('请选择教师')
     } else {
-      //获取后台信息
-      loadData()
-      //开始倒计时,清空状态
-      clearTimer()
+      loadData()//获取后台信息
+      clearTimer()//开始倒计时,清空状态
       setInterval(() => {
-        //时间流转
         sec.value = sec.value - 1
         pec.value = sec.value / allTime
         if (sec.value === 1) {
-          //挑选出正确的信息
-          checkCorrect()
-          //提示消息
-          showResult()
+          checkCorrect()//挑选出正确的信息
+          showResult() //提示消息
         }
         if (sec.value < 1) {
           sec.value = 0
@@ -137,13 +134,13 @@ function clearTimer() {
   sec.value = allTime
 }
 
+//判断你的选择是否正确
 function checkCorrect() {
   for (let i = 0; i < 8; i++) {
     if (yourSelect.value[i] == true) {
       yourSelectArray.value.push(allDataRef.value[i])
     }
   }
-  //判断你的选择是否正确
   yourSelectArray.value.forEach((your: any) => {
     yourStudent.value.forEach((yourStudent: any) => {
       if (your === yourStudent) {
@@ -152,7 +149,10 @@ function checkCorrect() {
       }
     })
   })
-  console.log(correctSelect.value)
+  console.log(JSON.stringify(correctSelect.value));
+  api.post('/student/CompBList', {ids: correctSelect.value}).then(res => {
+    console.log(res)
+  })
 }
 
 function showResult() {
