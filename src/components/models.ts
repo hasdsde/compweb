@@ -14,10 +14,10 @@ export interface Meta {
 export let menu = ref([
     {
         icon: 'home', label: '比赛', id: 1, isopen: true, children: [
+            {link: 'home', icon: 'emoji_events', desc: '计分板', id: 7,},
             {link: 'sea', icon: 'travel_explore', desc: '大海捞针', id: 4,},
-            {link: 'home', icon: 'travel_explore', desc: '首页', id: 7,},
             {link: 'fish', icon: 'animation', desc: '鱼目混珠', id: 5},
-            {link: 'location', icon: 'explore', desc: '鱼目混珠', id: 6},
+            {link: 'location', icon: 'explore', desc: '描述定位', id: 6},
         ]
     },
     {
