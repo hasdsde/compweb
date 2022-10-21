@@ -37,10 +37,9 @@
         </div>
       </q-linear-progress>
     </div>
-
+    <!--  猜测图片  -->
     <div class="row justify-center q-pt-md" style="max-width: 80vw">
-
-      <q-card class="my-card q-ma-md" v-for="(data,index) in allDataRef">
+      <q-card class="my-card q-ma-md" v-for="(data,index) in allDataRef" style="width: 300px">
         <q-item>
           <q-item-section avatar>
             {{ data }}
@@ -54,6 +53,119 @@
         </q-item>
 
         <img src="https://cdn.quasar.dev/img/parallax2.jpg">
+      </q-card>
+    </div>
+    <!--  答题卡片  -->
+    <div class="row justify-center q-pt-md">
+      <q-card class="my-card  text-white q-ma-md" v-for="compData in nextData">
+        <q-card-section :class="'bg-'+compData.color">
+          <div class="text-h6">{{ compData.name }}</div>
+          <div class="text-subtitle2 q-mb-md">{{ compData.no }}</div>
+          <q-separator dark/>
+        </q-card-section>
+        <q-card-section :class="'text-'+compData.color">
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>性别:</span></div>
+            <div class="col-5"><span v-if="compData.Bsex">{{ compData.sex }}</span></div>
+            <div class="col-3" style="max-height: 30px">
+              <q-checkbox v-model="compData.c1" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" @click="compData.Bsex=!compData.Bsex" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>年级专业班级:</span></div>
+            <div class="col-5"><span v-if="compData.Bgrade">{{ compData.grade }}</span></div>
+            <div class="col-3">
+              <q-checkbox v-model="compData.c2" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" @click="compData.Bgrade = !compData.Bgrade" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>政治面貌:</span></div>
+            <div class="col-5"><span v-if="compData.Bface">{{ compData.face }}</span></div>
+            <div class="col-3">
+              <q-checkbox v-model="compData.c3" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" @click="compData.Bface = !compData.Bface" size="xs"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>民族:</span></div>
+            <div class="col-5"><span v-if="compData.Bpeople">{{ compData.people }}</span></div>
+            <div class="col-3">
+              <q-checkbox v-model="compData.c4" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs"
+                     @click="compData.Bpeople = !compData.Bpeople"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>担任职务:</span></div>
+            <div class="col-5"><span v-if="compData.Bjob">{{ compData.job }}</span></div>
+            <div class="col-3">
+              <q-checkbox v-model="compData.c5" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs" @click="compData.Bjob = !compData.Bjob"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>家庭住址:</span></div>
+            <div class="col-5"><span v-if="compData.Baddress">{{ compData.address }}</span></div>
+            <div class="col-3">
+              <q-checkbox v-model="compData.c6" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs"
+                     @click="compData.Baddress = !compData.Baddress"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>宿舍号:</span></div>
+            <div class="col-5"><span v-if="compData.Bflat">{{ compData.flat }}</span></div>
+            <div class="col-3">
+              <q-checkbox v-model="compData.c7" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs" @click="compData.Bflat = !compData.Bflat"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>家庭经济情况:</span></div>
+            <div class="col-5"><span v-if="compData.Becomony">{{ compData.ecomony }}</span></div>
+            <div class="col-3">
+              <q-checkbox v-model="compData.c8" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs"
+                     @click="compData.Becomony = !compData.Becomony"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>奖惩情况:</span></div>
+            <div class="col-5"><span v-if="compData.Breward">{{ compData.reward }}</span></div>
+            <div class="col-3">
+              <q-checkbox v-model="compData.c9" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs"
+                     @click="compData.Breward = !compData.Breward"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>学习情况:</span></div>
+            <div class="col-5"><span v-if="compData.Bstudy">{{ compData.study }}</span></div>
+            <div class="col-3">
+              <q-checkbox v-model="compData.c10" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs" @click="compData.Bstudy = !compData.Bstudy"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>兴趣爱好:</span></div>
+            <div class="col-5"><span v-if="compData.Bhobby">{{ compData.hobby }}</span></div>
+            <div class="col-3">
+              <q-checkbox v-model="compData.c11" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs" @click="compData.Bhobby = !compData.Bhobby"/>
+            </div>
+          </div>
+          <div class="row" style="min-height: 30px">
+            <div class="col-4"><span>职业倾向:</span></div>
+            <div class="col-5"><span v-if="compData.Btarget">{{ compData.target }}</span></div>
+            <div class="col-3">
+              <q-checkbox v-model="compData.c12" :color="compData.color" @click="score=score+1" size="xs"/>
+              <q-btn :color="compData.color" outline label="查看" size="xs"
+                     @click="compData.Btarget = !compData.Btarget"/>
+            </div>
+          </div>
+        </q-card-section>
       </q-card>
     </div>
   </div>
@@ -79,7 +191,7 @@ const allDataRef = ref([])//全部信息带响应式
 const yourSelect = ref([])//你的选择
 const yourSelectArray = ref([])//你选择的学生学号
 const correctSelect = ref([])//你的正确的选择
-
+const nextData = ref([])
 
 //开始启动
 function start() {
@@ -97,7 +209,7 @@ function start() {
         pec.value = sec.value / allTime
         if (sec.value === 1) {
           checkCorrect()//挑选出正确的信息
-          showResult() //提示消息
+          guessInfo()//根据正确信息进行下一步操作
         }
         if (sec.value < 1) {
           sec.value = 0
@@ -149,12 +261,20 @@ function checkCorrect() {
       }
     })
   })
-  console.log(JSON.stringify(correctSelect.value));
+
+}
+
+//下一步的猜测操作
+function guessInfo() {
   api.post('/student/CompBList', {ids: correctSelect.value}).then(res => {
-    console.log(res)
+    res.data.forEach((data: { color: string; }) => {
+      data.color = 'primary'
+    })
+    nextData.value = res.data
   })
 }
 
+//展示结果
 function showResult() {
   $q.dialog({
     title: '结束:' + TeacherName.value,
@@ -182,5 +302,16 @@ function showResult() {
 .my-card {
   max-width: 300px;
 }
+
+.my-custom-toggle {
+  border: 1px solid #027be3;
+  width: 50vw;
+}
+
+.my-card {
+  width: 100%;
+  max-width: 400px;
+}
+
 </style>
 
