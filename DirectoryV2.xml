@@ -2,4 +2,5 @@
 <trees>
     <tree path="/src/pages/userManager.vue" title="数据管理" extension="vue"/>
     <tree path="/src/pages/SeaComp.vue" title="大海捞针" extension="vue"/>
+    <tree path="/src/pages/FishComp.vue" title="鱼目混珠" extension="vue"/>
 </trees>

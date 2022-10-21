@@ -160,7 +160,6 @@ import {CommonFail, CommonSuccess} from "components/models";
 import {useQuasar} from "quasar";
 
 const TeacherName = ref('')
-const value = ref(false)
 const CompDatas = ref({})
 const sec = ref(0)
 const pec = ref(0)
@@ -170,60 +169,52 @@ const score = ref(0)
 
 
 function start() {
-  if (TeacherName.value == '') {
-    CommonFail('请选择教师')
+  if (sec.value > 0) {
+    CommonFail('不得重复计时')
   } else {
-    api.get('/student/compA/' + TeacherName.value).then(res => {
-      res.data[0].color = 'accent'
-      res.data[1].color = 'secondary'
-      res.data[2].color = 'orange'
-      res.data.forEach((item: any) => {
-        item.Bsex = ref(false)
-        item.Bgrade = ref(false)
-        item.Bface = ref(false)
-        item.Bpeople = ref(false)
-        item.Bjob = ref(false)
-        item.Baddress = ref(false)
-        item.Bflat = ref(false)
-        item.Becomony = ref(false)
-        item.Breward = ref(false)
-        item.Bstudy = ref(false)
-        item.Bhobby = ref(false)
-        item.Btarget = ref(false)
+    if (TeacherName.value == '') {
+      CommonFail('请选择教师')
+    } else {
+      api.get('/student/compA/' + TeacherName.value).then(res => {
+        res.data[0].color = 'accent'
+        res.data[1].color = 'secondary'
+        res.data[2].color = 'orange'
+        CompDatas.value = res.data
+        console.log(res.data)
       })
-      CompDatas.value = res.data
-      console.log(res.data)
-    })
-    //开始倒计时,清空状态
-    score.value = 0
-    pec.value = 1
-    sec.value = allTime
-    setInterval(() => {
-      sec.value = sec.value - 1
-      pec.value = sec.value / allTime
-      if (sec.value === 1) {
-        $q.dialog({
-          title: '结束:' + TeacherName.value,
-          message: '时间结束,最终分数为:' + score.value,
-          persistent: true
-        }).onOk(() => {
-          // console.log('OK')
-          let CompA = []
-          if (localStorage.getItem('CompA') == undefined) {
-            CompA.push({'name': TeacherName.value, 'score': score.value})
-          } else {
-            CompA = JSON.parse(localStorage.getItem("CompA"))
-            CompA.push({'name': TeacherName.value, 'score': score.value})
-          }
-          localStorage.setItem('CompA', JSON.stringify(CompA))
-          CommonSuccess('数据已保存')
-        })
-      }
-      if (sec.value < 1) {
-        sec.value = 0
-      }
-    }, 1000)
+      //开始倒计时,清空状态
+      score.value = 0
+      pec.value = 1
+      sec.value = allTime
+      setInterval(() => {
+        sec.value = sec.value - 1
+        pec.value = sec.value / allTime
+        if (sec.value === 1) {
+          $q.dialog({
+            title: '结束:' + TeacherName.value,
+            message: '时间结束,最终分数为:' + score.value,
+            persistent: true
+          }).onOk(() => {
+            // console.log('OK')
+            let CompA = []
+            if (localStorage.getItem('CompA') == undefined) {
+              CompA.push({'name': TeacherName.value, 'score': score.value})
+            } else {
+              //@ts-ignore
+              CompA = JSON.parse(localStorage.getItem("CompA"))
+              CompA.push({'name': TeacherName.value, 'score': score.value})
+            }
+            localStorage.setItem('CompA', JSON.stringify(CompA))
+            CommonSuccess('数据已保存')
+          })
+        }
+        if (sec.value < 1) {
+          sec.value = 0
+        }
+      }, 1000)
+    }
   }
+
 }
 </script>
 
