@@ -44,6 +44,7 @@
 import {ref} from "vue";
 import {CommonFail} from "components/models";
 import {useQuasar} from "quasar";
+import {api} from "boot/axios";
 
 const TeacherName = ref('')
 const sec = ref(0)
@@ -51,6 +52,9 @@ const pec = ref(0)
 const allTime = 20
 const score = ref(0)
 const $q = useQuasar()
+let allData = []
+const yourStudent = ref([])
+const notYourStudent = ref([])
 
 function start() {
   if (sec.value > 0) {
@@ -59,13 +63,21 @@ function start() {
     if (TeacherName.value == '') {
       CommonFail('请选择教师')
     } else {
-      // api.get('/student/compA/' + TeacherName.value).then(res => {
-      //   res.data[0].color = 'accent'
-      //   res.data[1].color = 'secondary'
-      //   res.data[2].color = 'orange'
-      //   CompDatas.value = res.data
-      //   console.log(res.data)
-      // })
+      api.get('/student/CompB/' + TeacherName.value).then(res => {
+        allData = res.data
+        for (let i = 0; i < 8; i++) {
+          if (i < 4) {//@ts-ignore
+            yourStudent.value.push(allData[i])
+          } else {//@ts-ignore
+            notYourStudent.value.push(allData[i])
+          }
+        }
+        allData.sort(function () {
+          return Math.random() - 0.5
+        })
+        console.log(yourStudent.value);
+        console.log(notYourStudent.value);
+      })
       //开始倒计时,清空状态
       score.value = 0
       pec.value = 1
