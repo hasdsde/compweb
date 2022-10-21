@@ -37,6 +37,25 @@
         </div>
       </q-linear-progress>
     </div>
+
+    <div class="row justify-center q-pt-md" style="max-width: 80vw">
+
+      <q-card class="my-card q-ma-md" v-for="(data,index) in allDataRef">
+        <q-item>
+          <q-item-section avatar>
+            {{ data }}
+            <q-checkbox v-model="yourSelect[index]"/>
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>编号{{ index }}</q-item-label>
+            <q-item-label caption>SELECT</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <img src="https://cdn.quasar.dev/img/parallax2.jpg">
+      </q-card>
+    </div>
   </div>
 </template>
 
@@ -46,23 +65,30 @@ import {CommonFail} from "components/models";
 import {useQuasar} from "quasar";
 import {api} from "boot/axios";
 
+const selected = ref([])
 const TeacherName = ref('')
 const sec = ref(0)
 const pec = ref(0)
 const allTime = 20
 const score = ref(0)
 const $q = useQuasar()
-let allData = []
-const yourStudent = ref([])
-const notYourStudent = ref([])
+let allData = []//全部信息
+const yourStudent = ref([])//正确的学生信息
+const notYourStudent = ref([])//错误的学生信息
+const allDataRef = ref([])//全部信息带响应式
+const yourSelect = ref([])//你的选择
+const yourSelectArray = ref([])//你选择的学生学号
+const correctSelect = ref([])//你的正确的选择
 
 function start() {
+  //不能重复计时
   if (sec.value > 0) {
     CommonFail('不得重复计时')
   } else {
     if (TeacherName.value == '') {
       CommonFail('请选择教师')
     } else {
+      //后台获取信息
       api.get('/student/CompB/' + TeacherName.value).then(res => {
         allData = res.data
         for (let i = 0; i < 8; i++) {
@@ -75,8 +101,8 @@ function start() {
         allData.sort(function () {
           return Math.random() - 0.5
         })
-        console.log(yourStudent.value);
-        console.log(notYourStudent.value);
+        //混淆后将数据传入Ref
+        allDataRef.value = allData
       })
       //开始倒计时,清空状态
       score.value = 0
@@ -93,6 +119,24 @@ function start() {
           }).onOk(() => {
 
           })
+          //倒计时结束
+          //将选择的索引转换为id
+          for (let i = 0; i < 8; i++) {
+            if (yourSelect.value[i] == true) {
+              yourSelectArray.value.push(allDataRef.value[i])
+            }
+          }
+          console.log(yourSelectArray.value)
+          //判断你的选择是否正确
+          yourSelectArray.value.forEach((your: any) => {
+            yourStudent.value.forEach((yourStudent: any) => {
+              if (your === yourStudent) {
+                //@ts-ignore
+                correctSelect.value.push(your)
+              }
+            })
+          })
+          console.log(correctSelect.value)
         }
         if (sec.value < 1) {
           sec.value = 0
@@ -100,8 +144,8 @@ function start() {
       }, 1000)
     }
   }
-
 }
+
 </script>
 
 <style scoped>
@@ -115,5 +159,8 @@ function start() {
   max-width: 400px;
 }
 
+.my-card {
+  max-width: 300px;
+}
 </style>
 
