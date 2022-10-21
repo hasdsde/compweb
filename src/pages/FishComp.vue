@@ -79,7 +79,7 @@ const allDataRef = ref([])//全部信息带响应式
 const yourSelect = ref([])//你的选择
 const yourSelectArray = ref([])//你选择的学生学号
 const correctSelect = ref([])//你的正确的选择
-
+//开始启动
 function start() {
   //不能重复计时
   if (sec.value > 0) {
@@ -88,55 +88,19 @@ function start() {
     if (TeacherName.value == '') {
       CommonFail('请选择教师')
     } else {
-      //后台获取信息
-      api.get('/student/CompB/' + TeacherName.value).then(res => {
-        allData = res.data
-        for (let i = 0; i < 8; i++) {
-          if (i < 4) {//@ts-ignore
-            yourStudent.value.push(allData[i])
-          } else {//@ts-ignore
-            notYourStudent.value.push(allData[i])
-          }
-        }
-        allData.sort(function () {
-          return Math.random() - 0.5
-        })
-        //混淆后将数据传入Ref
-        allDataRef.value = allData
-      })
+      //获取后台信息
+      loadData()
       //开始倒计时,清空状态
-      score.value = 0
-      pec.value = 1
-      sec.value = allTime
+      clearTimer()
       setInterval(() => {
+        //时间流转
         sec.value = sec.value - 1
         pec.value = sec.value / allTime
         if (sec.value === 1) {
-          $q.dialog({
-            title: '结束:' + TeacherName.value,
-            message: '时间结束,最终分数为:' + score.value,
-            persistent: true
-          }).onOk(() => {
-
-          })
-          //倒计时结束
-          //将选择的索引转换为id
-          for (let i = 0; i < 8; i++) {
-            if (yourSelect.value[i] == true) {
-              yourSelectArray.value.push(allDataRef.value[i])
-            }
-          }
-          console.log(yourSelectArray.value)
-          //判断你的选择是否正确
-          yourSelectArray.value.forEach((your: any) => {
-            yourStudent.value.forEach((yourStudent: any) => {
-              if (your === yourStudent) {
-                //@ts-ignore
-                correctSelect.value.push(your)
-              }
-            })
-          })
-          console.log(correctSelect.value)
+          //挑选出正确的信息
+          checkCorrect()
+          //提示消息
+          showResult()
         }
         if (sec.value < 1) {
           sec.value = 0
@@ -146,6 +110,62 @@ function start() {
   }
 }
 
+//获取后台信息
+function loadData() {
+  //后台获取信息
+  api.get('/student/CompB/' + TeacherName.value).then(res => {
+    allData = res.data
+    for (let i = 0; i < 8; i++) {
+      if (i < 4) {//@ts-ignore
+        yourStudent.value.push(allData[i])
+      } else {//@ts-ignore
+        notYourStudent.value.push(allData[i])
+      }
+    }
+    allData.sort(function () {
+      return Math.random() - 0.5
+    })
+    //混淆后将数据传入Ref
+    allDataRef.value = allData
+  })
+}
+
+//清空计时器
+function clearTimer() {
+  score.value = 0
+  pec.value = 1
+  sec.value = allTime
+}
+
+function checkCorrect() {
+  for (let i = 0; i < 8; i++) {
+    if (yourSelect.value[i] == true) {
+      yourSelectArray.value.push(allDataRef.value[i])
+    }
+  }
+  //判断你的选择是否正确
+  yourSelectArray.value.forEach((your: any) => {
+    yourStudent.value.forEach((yourStudent: any) => {
+      if (your === yourStudent) {
+        //@ts-ignore
+        correctSelect.value.push(your)
+      }
+    })
+  })
+  console.log(correctSelect.value)
+}
+
+function showResult() {
+  $q.dialog({
+    title: '结束:' + TeacherName.value,
+    message: '时间结束,最终分数为:' + score.value,
+    persistent: true
+  }).onOk(() => {
+
+  })
+}
+
+//倒计时结束时，获取正确的学生学号数组
 </script>
 
 <style scoped>
