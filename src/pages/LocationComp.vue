@@ -172,14 +172,14 @@ function start() {
           }).onOk(() => {
             // console.log('OK')
             let compC = []
-            if (localStorage.getItem('compC') == undefined) {
+            if (localStorage.getItem('CompC') == undefined) {
               compC.push({'name': TeacherName.value, 'score': score.value})
             } else {
               //@ts-ignore
-              compC = JSON.parse(localStorage.getItem("compC"))
+              compC = JSON.parse(localStorage.getItem("CompC"))
               compC.push({'name': TeacherName.value, 'score': score.value})
             }
-            localStorage.setItem('compC', JSON.stringify(compC))
+            localStorage.setItem('CompC', JSON.stringify(compC))
             CommonSuccess('数据已保存')
           })
         }
