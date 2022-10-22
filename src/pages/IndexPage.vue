@@ -10,6 +10,7 @@
             row-key="name"
             :pagination="pagination"
             no-data-label="暂无数据"
+            rows-per-page-label="每页数据:"
         />
       </div>
       <div class="col q-pa-md">
@@ -20,6 +21,7 @@
             row-key="name"
             :pagination="pagination"
             no-data-label="暂无数据"
+            rows-per-page-label="每页数据:"
         />
       </div>
       <div class="col q-pa-md">
@@ -30,6 +32,7 @@
             row-key="name"
             :pagination="pagination"
             no-data-label="暂无数据"
+            rows-per-page-label="每页数据:"
         />
       </div>
     </div>
@@ -87,18 +90,15 @@ const $router = useRouter();
 if (localStorage.getItem('CompA') != undefined) {
   //@ts-ignore
   rowA.value = JSON.parse(localStorage.getItem('CompA'));
-  console.log(rowA.value)
 }
 
 if (localStorage.getItem('CompB') != undefined) {
   //@ts-ignore
   rowB.value = JSON.parse(localStorage.getItem('CompB'));
-  console.log(rowB.value)
 }
 if (localStorage.getItem('CompC') != undefined) {
   //@ts-ignore
   rowC.value = JSON.parse(localStorage.getItem('CompC'));
-  console.log(rowC.value)
 }
 
 function clearData() {
