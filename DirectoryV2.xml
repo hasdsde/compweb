@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <trees>
     <tree path="/src/pages/userManager.vue" title="数据管理" extension="vue"/>
-    <tree path="/src/pages/SeaComp.vue" title="大海捞针" extension="vue"/>
-    <tree path="/src/pages/FishComp.vue" title="鱼目混珠" extension="vue"/>
+    <tree path="/src/pages/SeaComp.vue" title="A大海捞针" extension="vue"/>
+    <tree path="/src/pages/FishComp.vue" title="B鱼目混珠" extension="vue"/>
+    <tree path="/src/pages/LocationComp.vue" title="C描述定位" extension="vue"/>
 </trees>

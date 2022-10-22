@@ -305,6 +305,8 @@ function showResult() {
   })
 }
 
+''
+
 //下一步
 function NextComp() {
   NclearTimer()
