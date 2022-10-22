@@ -26,7 +26,6 @@
     <!--  开始计时  -->
     <div class="row justify-center q-pt-md ">
       <q-btn color="primary" label="开始计时 !" @click="start"/>
-
     </div>
     <!--  倒计时  -->
     <div class="row justify-center q-pt-md ">
@@ -54,6 +53,15 @@
 
         <img src="https://cdn.quasar.dev/img/parallax2.jpg">
       </q-card>
+    </div>
+    <!--  倒计时  -->
+    <div class="row justify-center q-pt-md ">
+      <q-linear-progress rounded size="30px" stripe :value="Npec" color="purple" style="width: 60vw"
+                         class="q-mt-sm ">
+        <div class="absolute-full flex flex-center">
+          <q-badge text-color="white" :label="Nsec+'秒'"/>
+        </div>
+      </q-linear-progress>
     </div>
     <!--  答题卡片  -->
     <div class="row justify-center q-pt-md">
@@ -173,15 +181,19 @@
 
 <script lang="ts" setup>
 import {ref} from "vue";
-import {CommonFail} from "components/models";
+import {CommonFail, CommonSuccess} from "components/models";
 import {useQuasar} from "quasar";
 import {api} from "boot/axios";
+import {useRouter} from "vue-router/dist/vue-router";
 
 const selected = ref([])
 const TeacherName = ref('')
 const sec = ref(0)
 const pec = ref(0)
 const allTime = 10
+const Nsec = ref(0)
+const Npec = ref(0)
+const NallTime = 60
 const score = ref(0)
 const $q = useQuasar()
 let allData = []//全部信息
@@ -192,6 +204,7 @@ const yourSelect = ref([])//你的选择
 const yourSelectArray = ref([])//你选择的学生学号
 const correctSelect = ref([])//你的正确的选择
 const nextData = ref([])
+const $router = useRouter()
 
 //开始启动
 function start() {
@@ -209,7 +222,7 @@ function start() {
         pec.value = sec.value / allTime
         if (sec.value === 1) {
           checkCorrect()//挑选出正确的信息
-          guessInfo()//根据正确信息进行下一步操作
+          showResult()
         }
         if (sec.value < 1) {
           sec.value = 0
@@ -246,6 +259,12 @@ function clearTimer() {
   sec.value = allTime
 }
 
+function NclearTimer() {
+  score.value = 0
+  Npec.value = 1
+  Nsec.value = NallTime
+}
+
 //判断你的选择是否正确
 function checkCorrect() {
   for (let i = 0; i < 8; i++) {
@@ -278,11 +297,46 @@ function guessInfo() {
 function showResult() {
   $q.dialog({
     title: '结束:' + TeacherName.value,
-    message: '时间结束,最终分数为:' + score.value,
+    message: '时间结束,挑选正确个数为:' + correctSelect.value.length + ',点击OK进行下一步',
     persistent: true
   }).onOk(() => {
-
+    //进入下一场
+    NextComp()
   })
+}
+
+//下一步
+function NextComp() {
+  NclearTimer()
+  guessInfo()
+  //下一步开始倒计时
+  setInterval(() => {
+    Nsec.value = Nsec.value - 1
+    Npec.value = Nsec.value / NallTime
+    if (Nsec.value === 1) {
+      CommonSuccess('点击确定保存数据')//其实没有保存
+      $q.dialog({
+        title: '结束:' + TeacherName.value,
+        message: '时间结束,最终分数为:' + score.value,
+        persistent: true
+      }).onOk(() => {
+        // console.log('OK')
+        let CompB = []
+        if (localStorage.getItem('CompB') == undefined) {
+          CompB.push({'name': TeacherName.value, 'score': score.value})
+        } else {
+          //@ts-ignore
+          CompB = JSON.parse(localStorage.getItem("CompB"))
+          CompB.push({'name': TeacherName.value, 'score': score.value})
+        }
+        localStorage.setItem('CompB', JSON.stringify(CompB))
+        $router.go(0);
+      })
+    }
+    if (Nsec.value < 1) {
+      Nsec.value = 0
+    }
+  }, 1000)
 }
 
 //倒计时结束时，获取正确的学生学号数组
