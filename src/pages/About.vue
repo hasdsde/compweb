@@ -1,10 +1,11 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
     <q-banner class="bg-primary text-white">
-      这东西我做的，这东西开源了，这东西做起来好麻烦,也不知道我的二手平台啥时候能部署上
+      这东西我做的，这东西开源了，这东西做起来好麻烦<br>
+      没办法啊啊
       <template v-slot:action>
-        <q-btn flat color="white" label="Dismiss"/>
-        <q-btn flat color="white" label="Update Credit Card"/>
+        <q-btn flat color="white" label="服务端开源地址" target="_blank" href="https://github.com/hasdsde/Comp" />
+        <q-btn flat color="white" label="网页端开源地址" target="_blank" href="https://github.com/hasdsde/Compweb" />
       </template>
     </q-banner>
   </div>
@@ -14,7 +15,5 @@
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
 
