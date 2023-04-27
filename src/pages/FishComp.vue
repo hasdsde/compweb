@@ -28,7 +28,7 @@
             <q-card class="my-card q-ma-md" v-for="(data, index) in allDataRef" style="width: 300px">
                 <q-item>
                     <q-item-section avatar>
-                        {{ data }}
+                        {{ data.id }}
                         <q-checkbox v-model="yourSelect[index]"/>
                     </q-item-section>
 
@@ -38,7 +38,7 @@
                     </q-item-section>
                 </q-item>
 
-                <img src="https://cdn.quasar.dev/img/parallax2.jpg">
+                <img :src="'https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/comp/img/'+data.name+'.jpg'">
             </q-card>
         </div>
         <!--  倒计时  -->
@@ -179,6 +179,8 @@
                                    @click="compData.Btarget = !compData.Btarget"/>
                         </div>
                     </div>
+
+
                 </q-card-section>
             </q-card>
         </div>
@@ -286,7 +288,7 @@ function checkCorrect() {
         yourStudent.value.forEach((yourStudent: any) => {
             if (your === yourStudent) {
                 //@ts-ignore
-                correctSelect.value.push(your)
+                correctSelect.value.push(your.id)
             }
         })
     })
@@ -310,6 +312,10 @@ function guessInfo() {
             data.c10 = false
             data.c11 = false
             data.c12 = false
+            data.c13 = false
+            data.c14 = false
+            data.c15 = false
+            data.c16 = false
         })
         nextData.value = res.data
     })

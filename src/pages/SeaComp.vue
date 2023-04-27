@@ -27,6 +27,7 @@
         <!--  答题卡片  -->
         <div class="row justify-center q-pt-md">
             <q-card class="my-card  text-white q-ma-md" v-for="compData in CompDatas">
+
                 <q-card-section :class="'bg-' + compData.color">
                     <div class="text-h6">{{ compData.name }}</div>
                     <div class="text-subtitle2 q-mb-md">{{ compData.no }}</div>
@@ -153,6 +154,9 @@
                                    @click="compData.Btarget = !compData.Btarget"/>
                         </div>
                     </div>
+                </q-card-section>
+                <q-card-section>
+                    <q-img :src="'https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/comp/img/'+compData.name+'.jpg'"/>
                 </q-card-section>
             </q-card>
         </div>

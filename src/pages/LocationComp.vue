@@ -120,6 +120,9 @@
                         </div>
                     </div>
                 </q-card-section>
+                <q-card-section>
+                    <q-img :src="'https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/comp/img/'+compData.name+'.jpg'"/>
+                </q-card-section>
             </q-card>
         </div>
     </div>

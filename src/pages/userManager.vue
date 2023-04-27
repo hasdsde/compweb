@@ -10,7 +10,9 @@
             <template v-slot:body-cell-img="props">
                 <q-td :props="props">
                     <div>
-                        <q-btn color="primary" label="查看" size="sm"/>
+                        <q-btn color="primary" label="查看" size="sm"
+                               :href="'https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/comp/img/'+props.row.name+'.jpg'"
+                               target="_blank"/>
                     </div>
                     <div class="my-table-details">
                         {{ props.row.details }}
@@ -36,10 +38,10 @@ const columns = [
         sortable: true
     },
     {field: 'name', align: 'center', label: '姓名', sortable: true},
-    {field: 'no', label: '学号', align: 'center', sortable: true},
+    // {field: 'no', label: '学号', align: 'center', sortable: true},
     {field: 'sex', label: '性别', align: 'center', sortable: true},
-    {field: 'grade', label: '年级专业班级', align: 'center', sortable: true},
     {field: 'img', label: '图片', align: 'center', sortable: true, name: 'img'},
+    {field: 'grade', label: '年级专业班级', align: 'center', sortable: true},
     {field: 'face', label: '政治面貌', align: 'center', sortable: true},
     {field: 'people', label: '民族', align: 'center', sortable: true},
     {field: 'job', label: '担任职务', align: 'center', sortable: true},
@@ -48,8 +50,14 @@ const columns = [
     {field: 'ecomony', label: '家庭经济情况', align: 'center', sortable: true},
     {field: 'reward', label: '奖惩情况', align: 'center', sortable: true},
     {field: 'study', label: '学习情况', align: 'center', sortable: true},
+
+    {field: 'major', label: '专业', align: 'center', sortable: true},
+    {field: 'friends', label: '宿舍成员', align: 'center', sortable: true},
+    {field: 'xi', label: '系', align: 'center', sortable: true},
+    {field: 'future', label: '就业倾向', align: 'center', sortable: true},
+
     {field: 'hobby', label: '兴趣爱好', align: 'center', sortable: true},
-    {field: 'target', label: '职业倾向', align: 'center', sortable: true},
+    // {field: 'target', label: '职业倾向', align: 'center', sortable: true},
     {field: 'instructor', label: '辅导员姓名', align: 'center', sortable: true},
 ]
 
