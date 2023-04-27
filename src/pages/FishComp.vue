@@ -180,6 +180,46 @@
                         </div>
                     </div>
 
+                    <div class="row" style="min-height: 30px">
+                        <div class="col-4"><span>专业:</span></div>
+                        <div class="col-5"><span v-if="compData.Bmajor">{{ compData.major }}</span></div>
+                        <div class="col-3">
+                            <q-checkbox v-model="compData.c13" :color="compData.color" @click="score = score + 1"
+                                        size="xs"/>
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bmajor = !compData.Bmajor"/>
+                        </div>
+                    </div>
+                    <div class="row" style="min-height: 30px">
+                        <div class="col-4"><span>宿舍成员:</span></div>
+                        <div class="col-5"><span v-if="compData.Bfriends">{{ compData.friends }}</span></div>
+                        <div class="col-3">
+                            <q-checkbox v-model="compData.c14" :color="compData.color" @click="score = score + 1"
+                                        size="xs"/>
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bfriends = !compData.Bfriends"/>
+                        </div>
+                    </div>
+                    <div class="row" style="min-height: 30px">
+                        <div class="col-4"><span>系:</span></div>
+                        <div class="col-5"><span v-if="compData.Bxi">{{ compData.xi }}</span></div>
+                        <div class="col-3">
+                            <q-checkbox v-model="compData.c15" :color="compData.color" @click="score = score + 1"
+                                        size="xs"/>
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bxi = !compData.Bxi"/>
+                        </div>
+                    </div>
+                    <div class="row" style="min-height: 30px">
+                        <div class="col-4"><span>就业倾向:</span></div>
+                        <div class="col-5"><span v-if="compData.Bfuture">{{ compData.future }}</span></div>
+                        <div class="col-3">
+                            <q-checkbox v-model="compData.c16" :color="compData.color" @click="score = score + 1"
+                                        size="xs"/>
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bfuture = !compData.Bfuture"/>
+                        </div>
+                    </div>
 
                 </q-card-section>
             </q-card>

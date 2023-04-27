@@ -79,6 +79,29 @@
                         <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.flat }}</span>
                         </div>
                     </div>
+
+                    <div class="row" style="min-height: 30px">
+                        <div class="col-4"><span>专业:</span></div>
+                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.major }}</span>
+                        </div>
+                    </div>
+                    <div class="row" style="min-height: 30px">
+                        <div class="col-4"><span>宿舍成员:</span></div>
+                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.friends }}</span>
+                        </div>
+                    </div>
+                    <div class="row" style="min-height: 30px">
+                        <div class="col-4"><span>系:</span></div>
+                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.xi }}</span>
+                        </div>
+                    </div>
+                    <div class="row" style="min-height: 30px">
+                        <div class="col-4"><span>就业倾向:</span></div>
+                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.future }}</span>
+                        </div>
+                    </div>
+
+
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>家庭经济情况:</span></div>
                         <div class="col-5"><span v-if="compData.Becomony">{{ compData.ecomony }}</span></div>
