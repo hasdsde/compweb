@@ -34,86 +34,86 @@
                     <q-separator dark/>
                 </q-card-section>
                 <q-card-section :class="'text-' + compData.color">
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>性别:</span></div>
-                        <div class="col-5"><span v-if="compData.Bsex">{{ compData.sex }}</span></div>
-                        <div class="col-3" style="max-height: 30px">
-                            <q-checkbox v-model="compData.c1" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看" @click="compData.Bsex = !compData.Bsex"
-                                   size="xs"/>
-                        </div>
-                    </div>
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>年级专业班级:</span></div>
-                        <div class="col-5"><span v-if="compData.Bgrade">{{ compData.grade }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c2" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看"
-                                   @click="compData.Bgrade = !compData.Bgrade" size="xs"/>
-                        </div>
-                    </div>
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>政治面貌:</span></div>
-                        <div class="col-5"><span v-if="compData.Bface">{{ compData.face }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c3" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看"
-                                   @click="compData.Bface = !compData.Bface" size="xs"/>
-                        </div>
-                    </div>
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>民族:</span></div>
-                        <div class="col-5"><span v-if="compData.Bpeople">{{ compData.people }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c4" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看" size="xs"
-                                   @click="compData.Bpeople = !compData.Bpeople"/>
-                        </div>
-                    </div>
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>担任职务:</span></div>
-                        <div class="col-5"><span v-if="compData.Bjob">{{ compData.job }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c5" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看" size="xs"
-                                   @click="compData.Bjob = !compData.Bjob"/>
-                        </div>
-                    </div>
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>家庭住址:</span></div>
-                        <div class="col-5"><span v-if="compData.Baddress">{{ compData.address }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c6" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看" size="xs"
-                                   @click="compData.Baddress = !compData.Baddress"/>
-                        </div>
-                    </div>
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>宿舍号:</span></div>
-                        <div class="col-5"><span v-if="compData.Bflat">{{ compData.flat }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c7" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看" size="xs"
-                                   @click="compData.Bflat = !compData.Bflat"/>
-                        </div>
-                    </div>
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>家庭经济情况:</span></div>
-                        <div class="col-5"><span v-if="compData.Becomony">{{ compData.ecomony }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c8" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看" size="xs"
-                                   @click="compData.Becomony = !compData.Becomony"/>
-                        </div>
-                    </div>
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>性别:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Bsex">{{ compData.sex }}</span></div>-->
+                    <!--                        <div class="col-3" style="max-height: 30px">-->
+                    <!--                            <q-checkbox v-model="compData.c1" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看" @click="compData.Bsex = !compData.Bsex"-->
+                    <!--                                   size="xs"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>年级专业班级:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Bgrade">{{ compData.grade }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c2" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看"-->
+                    <!--                                   @click="compData.Bgrade = !compData.Bgrade" size="xs"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>政治面貌:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Bface">{{ compData.face }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c3" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看"-->
+                    <!--                                   @click="compData.Bface = !compData.Bface" size="xs"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>民族:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Bpeople">{{ compData.people }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c4" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看" size="xs"-->
+                    <!--                                   @click="compData.Bpeople = !compData.Bpeople"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>担任职务:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Bjob">{{ compData.job }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c5" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看" size="xs"-->
+                    <!--                                   @click="compData.Bjob = !compData.Bjob"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>家庭住址:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Baddress">{{ compData.address }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c6" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看" size="xs"-->
+                    <!--                                   @click="compData.Baddress = !compData.Baddress"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>宿舍号:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Bflat">{{ compData.flat }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c7" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看" size="xs"-->
+                    <!--                                   @click="compData.Bflat = !compData.Bflat"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>家庭经济情况:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Becomony">{{ compData.ecomony }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c8" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看" size="xs"-->
+                    <!--                                   @click="compData.Becomony = !compData.Becomony"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>奖惩情况:</span></div>
                         <div class="col-5"><span v-if="compData.Breward">{{ compData.reward }}</span></div>
@@ -124,16 +124,16 @@
                                    @click="compData.Breward = !compData.Breward"/>
                         </div>
                     </div>
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>学习情况:</span></div>
-                        <div class="col-5"><span v-if="compData.Bstudy">{{ compData.study }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c10" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看" size="xs"
-                                   @click="compData.Bstudy = !compData.Bstudy"/>
-                        </div>
-                    </div>
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>学习情况:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Bstudy">{{ compData.study }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c10" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看" size="xs"-->
+                    <!--                                   @click="compData.Bstudy = !compData.Bstudy"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>兴趣爱好:</span></div>
                         <div class="col-5"><span v-if="compData.Bhobby">{{ compData.hobby }}</span></div>
@@ -144,47 +144,47 @@
                                    @click="compData.Bhobby = !compData.Bhobby"/>
                         </div>
                     </div>
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>职业倾向:</span></div>
-                        <div class="col-5"><span v-if="compData.Btarget">{{ compData.target }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c12" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看" size="xs"
-                                   @click="compData.Btarget = !compData.Btarget"/>
-                        </div>
-                    </div>
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>职业倾向:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Btarget">{{ compData.target }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c12" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看" size="xs"-->
+                    <!--                                   @click="compData.Btarget = !compData.Btarget"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
 
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>专业:</span></div>
-                        <div class="col-5"><span v-if="compData.Bmajor">{{ compData.major }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c13" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看" size="xs"
-                                   @click="compData.Bmajor = !compData.Bmajor"/>
-                        </div>
-                    </div>
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>宿舍成员:</span></div>
-                        <div class="col-5"><span v-if="compData.Bfriends">{{ compData.friends }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c14" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看" size="xs"
-                                   @click="compData.Bfriends = !compData.Bfriends"/>
-                        </div>
-                    </div>
-                    <div class="row" style="min-height: 30px">
-                        <div class="col-4"><span>系:</span></div>
-                        <div class="col-5"><span v-if="compData.Bxi">{{ compData.xi }}</span></div>
-                        <div class="col-3">
-                            <q-checkbox v-model="compData.c15" :color="compData.color" @click="score = score + 1"
-                                        size="xs"/>
-                            <q-btn :color="compData.color" outline label="查看" size="xs"
-                                   @click="compData.Bxi = !compData.Bxi"/>
-                        </div>
-                    </div>
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>专业:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Bmajor">{{ compData.major }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c13" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看" size="xs"-->
+                    <!--                                   @click="compData.Bmajor = !compData.Bmajor"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>宿舍成员:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Bfriends">{{ compData.friends }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c14" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看" size="xs"-->
+                    <!--                                   @click="compData.Bfriends = !compData.Bfriends"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="row" style="min-height: 30px">-->
+                    <!--                        <div class="col-4"><span>系:</span></div>-->
+                    <!--                        <div class="col-5"><span v-if="compData.Bxi">{{ compData.xi }}</span></div>-->
+                    <!--                        <div class="col-3">-->
+                    <!--                            <q-checkbox v-model="compData.c15" :color="compData.color" @click="score = score + 1"-->
+                    <!--                                        size="xs"/>-->
+                    <!--                            <q-btn :color="compData.color" outline label="查看" size="xs"-->
+                    <!--                                   @click="compData.Bxi = !compData.Bxi"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>就业倾向:</span></div>
                         <div class="col-5"><span v-if="compData.Bfuture">{{ compData.future }}</span></div>

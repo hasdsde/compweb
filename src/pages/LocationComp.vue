@@ -13,7 +13,6 @@
         <!--  开始计时  -->
         <div class="row justify-center q-pt-md ">
             <q-btn color="primary" label="开始计时 !" @click="start"/>
-
         </div>
         <!--  倒计时  -->
         <div class="row justify-center q-pt-md ">
@@ -42,62 +41,124 @@
                         </div>
                     </div>
                     <q-separator dark/>
+
                 </q-card-section>
                 <q-card-section :class="'text-' + compData.color">
+
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>性别:</span></div>
-                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.sex }}</span>
+                        <div class="col-5"><span v-if="getRandom() > 0.8 || compData.Bsex">{{ compData.sex }}</span>
+                        </div>
+                        <div class="col-3">
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bsex = !compData.Bsex"/>
                         </div>
                     </div>
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>年级专业班级:</span></div>
-                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.grade }}</span>
+                        <div class="col-5"><span v-if="getRandom() > 0.8">{{ compData.grade }}</span>
+                        </div>
+
+                        <div class="col-3">
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bgrade = !compData.Bgrade"/>
                         </div>
                     </div>
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>政治面貌:</span></div>
-                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.face }}</span>
+                        <div class="col-5"><span v-if="getRandom() > 0.8 || compData.Bface">{{ compData.face }}</span>
+                        </div>
+
+                        <div class="col-3">
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bface = !compData.Bface"/>
                         </div>
                     </div>
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>民族:</span></div>
-                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.people }}</span>
+                        <div class="col-5"><span v-if="getRandom() > 0.8||compData.Bpeople">{{ compData.people }}</span>
+                        </div>
+
+                        <div class="col-3">
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bpeople = !compData.Bpeople"/>
                         </div>
                     </div>
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>担任职务:</span></div>
-                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.job }}</span>
+                        <div class="col-5"><span v-if="getRandom() > 0.8||compData.Bjob">{{ compData.job }}</span>
+                        </div>
+
+                        <div class="col-3">
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bjob = !compData.Bjob"/>
                         </div>
                     </div>
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>家庭住址:</span></div>
-                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.address }}</span>
+                        <div class="col-5"><span v-if="getRandom() > 0.8||compData.Baddress">{{
+                            compData.address
+                            }}</span>
+                        </div>
+
+                        <div class="col-3">
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Baddress = !compData.Baddress"/>
                         </div>
                     </div>
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>宿舍号:</span></div>
-                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.flat }}</span>
+                        <div class="col-5"><span v-if="getRandom() > 0.8||compData.Bflat">{{ compData.flat }}</span>
+                        </div>
+
+                        <div class="col-3">
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bflat = !compData.Bflat"/>
                         </div>
                     </div>
 
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>专业:</span></div>
-                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.major }}</span>
+                        <div class="col-5"><span v-if="getRandom() > 0.8||compData.Bmajor">{{ compData.major }}</span>
+                        </div>
+
+                        <div class="col-3">
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bmajor = !compData.Bmajor"/>
                         </div>
                     </div>
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>宿舍成员:</span></div>
-                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.friends }}</span>
+                        <div class="col-5"><span v-if="getRandom() > 0.8||compData.Bfriends">{{
+                            compData.friends
+                            }}</span>
+                        </div>
+
+                        <div class="col-3">
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bfriends = !compData.Bfriends"/>
                         </div>
                     </div>
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>系:</span></div>
-                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.xi }}</span>
+                        <div class="col-5"><span v-if="getRandom() > 0.8||compData.Bxi">{{ compData.xi }}</span>
+                        </div>
+
+                        <div class="col-3">
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bxi = !compData.Bxi"/>
                         </div>
                     </div>
                     <div class="row" style="min-height: 30px">
                         <div class="col-4"><span>就业倾向:</span></div>
-                        <div class="col-5"><span v-if="(Math.round(Math.random())) > 0.5">{{ compData.future }}</span>
+                        <div class="col-5"><span v-if="getRandom() > 0.8||compData.Bfuture ">{{
+                            compData.future
+                            }}</span>
+                        </div>
+
+                        <div class="col-3">
+                            <q-btn :color="compData.color" outline label="查看" size="xs"
+                                   @click="compData.Bfuture = !compData.Bfuture"/>
                         </div>
                     </div>
 
@@ -154,7 +215,7 @@
 <script lang="ts" setup>
 import {ref} from "vue";
 import {api} from "boot/axios";
-import {CommonFail, CommonSuccess} from "components/models";
+import {CommonFail} from "components/models";
 import {useQuasar} from "quasar";
 
 const TeacherName = ref('')
@@ -165,6 +226,9 @@ const allTime = 20
 const $q = useQuasar()
 const score = ref(0)
 
+function getRandom() {
+    return Math.random()
+}
 
 function start() {
     if (sec.value > 0) {
@@ -187,32 +251,32 @@ function start() {
             score.value = 0
             pec.value = 1
             sec.value = allTime
-            setInterval(() => {
-                sec.value = sec.value - 1
-                pec.value = sec.value / allTime
-                if (sec.value === 1) {
-                    $q.dialog({
-                        title: '结束:' + TeacherName.value,
-                        message: '时间结束,最终分数为:' + score.value,
-                        persistent: true
-                    }).onOk(() => {
-                        // console.log('OK')
-                        let compC = []
-                        if (localStorage.getItem('CompC') == undefined) {
-                            compC.push({'name': TeacherName.value, 'score': score.value})
-                        } else {
-                            //@ts-ignore
-                            compC = JSON.parse(localStorage.getItem("CompC"))
-                            compC.push({'name': TeacherName.value, 'score': score.value})
-                        }
-                        localStorage.setItem('CompC', JSON.stringify(compC))
-                        CommonSuccess('数据已保存')
-                    })
-                }
-                if (sec.value < 1) {
-                    sec.value = 0
-                }
-            }, 1000)
+            // setInterval(() => {
+            //     sec.value = sec.value - 1
+            //     pec.value = sec.value / allTime
+            //     if (sec.value === 1) {
+            //         $q.dialog({
+            //             title: '结束:' + TeacherName.value,
+            //             message: '时间结束,最终分数为:' + score.value,
+            //             persistent: true
+            //         }).onOk(() => {
+            //             // console.log('OK')
+            //             let compC = []
+            //             if (localStorage.getItem('CompC') == undefined) {
+            //                 compC.push({'name': TeacherName.value, 'score': score.value})
+            //             } else {
+            //                 //@ts-ignore
+            //                 compC = JSON.parse(localStorage.getItem("CompC"))
+            //                 compC.push({'name': TeacherName.value, 'score': score.value})
+            //             }
+            //             localStorage.setItem('CompC', JSON.stringify(compC))
+            //             CommonSuccess('数据已保存')
+            //         })
+            //     }
+            //     if (sec.value < 1) {
+            //         sec.value = 0
+            //     }
+            // }, 1000)
         }
     }
 
